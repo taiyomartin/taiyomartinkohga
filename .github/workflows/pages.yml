@@ -26,9 +26,9 @@ jobs:
             -d '{"source":{"branch":"main","path":"/"}}'
 
       - name: Build and upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: .
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v5
