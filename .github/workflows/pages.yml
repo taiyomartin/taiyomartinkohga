@@ -9,26 +9,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pages: write
-      id-token: write
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Enable GitHub Pages
+      - name: Prepare site files
         run: |
-          curl -sS -X PUT \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/pages \
-            -d '{"source":{"branch":"main","path":"/"}}'
+          mkdir -p public
+          cp -r index.html public/
 
-      - name: Build and upload artifact
-        uses: actions/upload-pages-artifact@v5
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: .
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v5
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
+          publish_branch: gh-pages
+          commit_message: Deploy site to GitHub Pages
+          keep_files: false

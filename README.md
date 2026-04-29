@@ -4,6 +4,6 @@
 
 ## 使い方
 
-1. `main` ブランチに変更をプッシュすると、自動的に GitHub Actions が実行され、GitHub Pages へデプロイされます。
-2. 公開先 URL はリポジトリの `Settings > Pages` で確認できます。
+1. `main` ブランチに変更をプッシュすると、自動的に GitHub Actions が実行され、`gh-pages` ブランチにサイトをデプロイします。
+2. GitHub Pages の公開先 URL はリポジトリの `Settings > Pages` で、`gh-pages` ブランチ / `/` が選択されているか確認してください。
 3. `index.html` を編集してサイトのコンテンツを更新してください。
